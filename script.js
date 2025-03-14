@@ -1,0 +1,1 @@
+/mnt/data/script_with_admin_toggle.js

@@ -1,0 +1,182 @@
+body {
+    margin: 0;
+    font-family: 'DM Mono', monospace;
+    color: #000;
+}
+
+.menu {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10%;
+    background: transparent;
+    z-index: 1000;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.menu-item a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #002fa7;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.menu-item a:hover {
+    text-decoration: underline;
+}
+
+.gallery {
+    padding-top: 180px;
+}
+
+/* Dynamiskt bildgalleri */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Exakt 3 bilder per rad */
+    gap: 15px; /* Avstånd mellan bilder horisontellt och vertikalt */
+    padding: 0 10%;
+}
+
+/* Justerar bilderna för att få jämnt avstånd */
+.image-grid img {
+    width: 100%;
+    height: 250px; /* Höjd för att hålla en enhetlig storlek */
+    object-fit: contain; /* Visa hela bilden utan att beskära den */
+    border-radius: 0px;
+    margin-bottom: 60px; /* Mer avstånd under bilderna */
+}
+
+/* Ta bort tidigare regler som förändrade bildstorleken */
+.image-grid img:nth-child(3n),
+.image-grid img:nth-child(5n),
+.image-grid img:nth-child(7n) {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+/* 🔥 Gör bilderna dragbara utan att blockera länkar */
+.image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: grab;
+    position: relative;
+    user-select: none;
+}
+
+/* Visuell feedback vid drag-and-drop */
+.image-wrapper.dragging {
+    opacity: 0.6;
+    border: 2px dashed #002fa7; /* Blå ram för visuell feedback */
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+/* 🔥 Fix: Klickbara länkar fungerar alltid */
+.menu-item a,
+.menu-item {
+    position: relative;
+    z-index: 10;
+}
+
+/* Text mellan menyn och rubrikerna */
+.intro-text {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 400;
+    max-width: 1000px;
+    margin: 60px 0 6px 0%;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Mika-sidan */
+.content {
+    display: none;
+    padding: 70px 10% 50px 10%;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* 🔥 Fix för att visa Mika Minja Sjölund-sidan korrekt */
+#gallery {
+    display: block;
+}
+
+#gallery.hidden,
+#mika-page.hidden {
+    display: none;
+}
+
+/* Kolumner för Mika-sidan */
+.column {
+    flex: 1;
+    min-width: 300px;
+}
+
+.column h2 {
+    font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #002fa7;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.column p {
+    font-size: 12px;
+    color: #333;
+    line-height: 1.2;
+    margin-bottom: 9px;
+}
+
+/* Mobilanpassning */
+@media screen and (max-width: 768px) {
+    .menu {
+        padding: 10px 5%;
+    }
+
+    .content {
+        flex-direction: column;
+        gap: 30px;
+        padding: 100px 5% 50px 5%;
+    }
+
+    .column {
+        min-width: 100%;
+    }
+
+    /* Justering för dynamisk bildlayout på mobil */
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 🔥 Fix: Dra-och-släpp fungerar korrekt på mobil */
+@media (max-width: 768px) {
+    .image-wrapper {
+        cursor: grab;
+    }
+}
+
+/* 🔥 Fix: Klickbara element fungerar korrekt */
+.menu,
+.menu a {
+    z-index: 1000; /* Se till att menyn alltid går att klicka på */
+}
+
+.small-text {
+    font-size: 9px;
+    font-weight: normal;
+    display: block;
+    margin-bottom: -12px;
+}

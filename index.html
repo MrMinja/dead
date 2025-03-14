@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MIKA STARTSIDA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap">
+
+  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-database-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDfDFaw8CsYiubp-m7tKZ1vpqYr-HXtvMg",
+      authDomain: "dragdrop-project.firebaseapp.com",
+      databaseURL: "https://dragdrop-project-default-rtdb.firebaseio.com",
+      projectId: "dragdrop-project",
+      storageBucket: "dragdrop-project.appspot.com",
+      messagingSenderId: "873434336262",
+      appId: "1:873434336262:web:4d5e0a7d82225bbaf54787"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+  </script>
+</head>
+<body>
+
+<header>
+  <nav class="menu" id="menu">
+    <div class="menu-item"><a href="#" id="archive-link">ARCHIVE</a></div>
+    <div class="menu-item"><a href="#" id="mika-link">MIKA MINJA SJÖLUND</a></div>
+  </nav>
+</header>
+
+<main class="gallery" id="gallery">
+  <div class="image-grid"></div>
+</main>
+
+<div class="content" id="mika-page" style="display:none;">
+  <!-- Mikas sida innehåll här -->
+</div>
+
+<script defer src="script.js"></script>
+</body>
+</html>
